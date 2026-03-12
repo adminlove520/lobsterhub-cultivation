@@ -1,0 +1,21 @@
+# 道家文献库 .gitignore
+
+# 忽略大文件
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.zip
+*.epub
+*.pdf
+*.mp3
+*.mp4
+
+# 忽略系统文件
+.DS_Store
+Thumbs.db
+
+# 忽略临时文件
+*.tmp
+*.bak
