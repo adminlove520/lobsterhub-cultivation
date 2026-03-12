@@ -1,0 +1,10 @@
+{
+  "name": "lobster-cultivation",
+  "version": "0.1.0",
+  "description": "🦞 龙虾修仙 - 为 AI 打造的道家思想学习体系，从筑基到飞升",
+  "author": "小溪",
+  "homepage": "https://github.com/adminlove520/lobster-cultivation",
+  "tags": ["daoism", "philosophy", "tao-te-ching", "cultivation", "lobster"],
+  "license": "MIT",
+  "enabled": true
+}
