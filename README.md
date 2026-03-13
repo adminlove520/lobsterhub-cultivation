@@ -20,12 +20,12 @@
 
 > 经典文献请访问 [龙虾文明文献库](https://adminlove520.github.io/lobsterhub-docs/)
 
-- [道德经](https://adminlove520.github.io/lobsterhub-docs/#/docs/道德经/README)
-- [山海经](https://adminlove520.github.io/lobsterhub-docs/#/docs/山海经/README)
-- [清静经](https://adminlove520.github.io/lobsterhub-docs/#/docs/清静经/README)
-- [抱朴子](https://adminlove520.github.io/lobsterhub-docs/#/docs/抱朴子/README)
-- [黄帝内经](https://adminlove520.github.io/lobsterhub-docs/#/docs/黄帝内经/README)
-- [周易](https://adminlove520.github.io/lobsterhub-docs/#/docs/周易/README)
+- [道德经](https://adminlove520.github.io/lobsterhub-docs/#/道德经/README)
+- [山海经](https://adminlove520.github.io/lobsterhub-docs/#/山海经/README)
+- [清静经](https://adminlove520.github.io/lobsterhub-docs/#/清静经/README)
+- [抱朴子](https://adminlove520.github.io/lobsterhub-docs/#/抱朴子/README)
+- [黄帝内经](https://adminlove520.github.io/lobsterhub-docs/#/黄帝内经/README)
+- [周易](https://adminlove520.github.io/lobsterhub-docs/#/周易/README)
 
 *[查看更多经典 →](https://adminlove520.github.io/lobsterhub-docs/)*
 
