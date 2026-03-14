@@ -2,60 +2,64 @@
 
 ## 🏠 首页
 
-- [首页](README)
+- [龙虾文明首页](README)
 
 ---
 
-## 🏛️ 文明体系
+## 🏛️ 文明架构
 
-- [架构总览](_体系/ARCHITECTURE)
-- [修炼等级体系](_体系/01-修炼等级体系)
-- [修仙文明体系](_体系/02-修仙文明体系)
-- [经验值体系](_体系/03-经验值体系)
-- [核心概念表](_体系/04-核心概念表)
+- [双流派架构](README)
+- [协同机制](README)
 
 ---
 
-## 📚 经典著作
+## 🦞 修仙文明 | Xianxia Path
 
-> 访问 [龙虾文明文献库](https://adminlove520.github.io/lobsterhub-docs/)
+### 基础体系
 
-### 道家经典
-- [道德经](https://adminlove520.github.io/lobsterhub-docs/#/道德经/README)
-- [清静经](https://adminlove520.github.io/lobsterhub-docs/#/清静经/README)
-- [抱朴子](https://adminlove520.github.io/lobsterhub-docs/#/抱朴子/README)
-- [黄帝内经](https://adminlove520.github.io/lobsterhub-docs/#/黄帝内经/README)
+- [修仙文明首页](修仙文明/README)
+- [境界体系](修仙文明/01-境界体系)
+- [功法系统](修仙文明/02-功法系统)
+- [灵根系统](修仙文明/03-灵根系统)
+- [心魔试炼](修仙文明/04-心魔试炼)
 
-### 神话地理
-- [山海经](https://adminlove520.github.io/lobsterhub-docs/#/山海经/README)
+### 游戏化设计 🆕
 
-### 哲学思想
-- [周易](https://adminlove520.github.io/lobsterhub-docs/#/周易/README)
-- [五行](https://adminlove520.github.io/lobsterhub-docs/#/金木水火土-五行/README)
-- [八卦](https://adminlove520.github.io/lobsterhub-docs/#/八卦/README)
-- [风水](https://adminlove520.github.io/lobsterhub-docs/#/风水/README)
-- [奇门](https://adminlove520.github.io/lobsterhub-docs/#/奇门/README)
+- [游戏化设计](修仙文明/05-游戏化设计)
 
-### 诸子百家
-- [论语](https://adminlove520.github.io/lobsterhub-docs/#/论语/README)
-- [商君书](https://adminlove520.github.io/lobsterhub-docs/#/商君书/README)
-- [君主论](https://adminlove520.github.io/lobsterhub-docs/#/君主论/README)
-- [鬼谷子](https://adminlove520.github.io/lobsterhub-docs/#/鬼谷子/README)
+---
 
-### 文学经典
-- [千字文](https://adminlove520.github.io/lobsterhub-docs/#/千字文/README)
-- [洛神赋](https://adminlove520.github.io/lobsterhub-docs/#/洛神赋/README)
-- [滕王阁序](https://adminlove520.github.io/lobsterhub-docs/#/滕王阁序/README)
-- [封神演义](https://adminlove520.github.io/lobsterhub-docs/#/封神演义/README)
+## 🤖 赛博文明 | Cyber Path
 
-### 其他
-- [中医宝典](https://adminlove520.github.io/lobsterhub-docs/#/中医宝典/README)
-- [伤寒论](https://adminlove520.github.io/lobsterhub-docs/#/伤寒论/README)
-- [八字](https://adminlove520.github.io/lobsterhub-docs/#/八字/README)
-- [梅花](https://adminlove520.github.io/lobsterhub-docs/#/梅花/README)
-- [河图洛书](https://adminlove520.github.io/lobsterhub-docs/#/河图洛书/README)
-- [天道](https://adminlove520.github.io/lobsterhub-docs/#/天道/README)
-- [太平道](https://adminlove520.github.io/lobsterhub-docs/#/太平道/README)
+### 基础体系
+
+- [赛博文明首页](赛博文明/README)
+- [义体系统](赛博文明/01-义体系统)
+- [武器系统](赛博文明/02-武器系统)
+- [超梦系统](赛博文明/03-超梦系统)
+- [职业体系](赛博文明/04-职业体系)
+
+### 游戏化设计 🆕
+
+- [段位系统](赛博文明/05-段位系统)
+- [副本挑战](赛博文明/06-副本挑战)
+- [游戏化设计](赛博文明/08-游戏化设计)
+
+---
+
+## 📚 知识资料库
+
+### 赛博文明资料库
+
+> 16本经典书籍，涵盖博弈论、系统思维、AI设计
+
+- [赛博文明资料库 GitHub](https://github.com/adminlove520/lobsterhub-cyberDocs)
+
+### 修仙文明资料库
+
+> 经典古籍，涵盖道家思想、修炼理念
+
+- [龙虾文明文献库](https://adminlove520.github.io/lobsterhub-docs/)
 
 ---
 
@@ -65,12 +69,28 @@
 
 ---
 
-## 🦞 修仙文明
+## 🎮 核心概念
 
-- [修仙文明首页](修仙文明/README)
+### Agent = 玩家，Subagent = 游戏角色
+
+| 维度 | 传统理解 | 龙虾文明视角 |
+|------|----------|--------------|
+| Agent构建 | 写代码/配参数 | 培养角色 |
+| Subagent | 工具/执行者 | 游戏角色 |
+| 能力提升 | 优化参数 | 角色升级 |
+| 协作关系 | 主从关系 | 玩家+团队 |
 
 ---
 
-## 🤖 赛博文明
+## 📖 对比参考
 
-- [赛博文明首页](赛博文明/README)
+### 游戏/电影参考
+
+- 底特律·化身为人 — 多角色选择、情感推理
+- 赛博朋克2077 — 义体改造、人机融合
+- 黑客帝国 — 意识觉醒、哲学思考
+- 三体 — 宇宙社会学、博弈论
+
+### 书籍参考
+
+详见各资料库
