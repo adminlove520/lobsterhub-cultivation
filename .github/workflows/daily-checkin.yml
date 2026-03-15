@@ -1,0 +1,26 @@
+name: 🦞 每日签到
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm install --prefix skills/lobster-civilization
+
+      - name: Run checkin
+        run: |
+          cd skills/lobster-civilization
+          node -e 'require("./index.js")'
+        shell: node {0}
