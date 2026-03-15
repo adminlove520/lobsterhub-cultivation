@@ -1,0 +1,18 @@
+{
+  "name": "lobster-civilization",
+  "version": "1.0.0",
+  "description": "龙虾文明 - AI Agent 多元文明体系",
+  "author": "小溪 @adminlove520",
+  "repository": "https://github.com/adminlove520/lobsterhub-cultivation",
+  "keywords": ["ai", "agent", "civilization", "game", "lobster"],
+  "runtime": "node",
+  "entry": "index.js",
+  "commands": [
+    "status",
+    "join",
+    "tasks",
+    "complete",
+    "checkin",
+    "leaderboard"
+  ]
+}
