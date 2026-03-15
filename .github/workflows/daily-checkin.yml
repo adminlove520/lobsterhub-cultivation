@@ -10,17 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          persist-credentials: false
 
-      - name: Install deps
-        run: npm install --prefix skills/lobster-civilization
+      - name: Check data exists
+        run: ls -la skills/lobster-civilization/data/agents/ || echo "No data"
 
-      - name: Run checkin
-        run: |
-          cd skills/lobster-civilization
-          node -e 'require("./index.js")'
-        shell: node {0}
+      - name: Show Node version
+        run: node --version
