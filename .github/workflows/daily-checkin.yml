@@ -3,6 +3,10 @@ name: 🦞 每日签到
 on:
   schedule:
     - cron: '0 8 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'skills/lobster-civilization/**'
 
 jobs:
   checkin:
@@ -10,45 +14,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Run checkin
+      - name: Run checkin script
         run: |
           cd skills/lobster-civilization
           node -e '
-          const path = require("path");
           const fs = require("fs");
+          const agentsDir = "./data/agents";
           
-          const dataDir = path.join(process.cwd(), "data");
-          const agentsDir = path.join(dataDir, "agents");
+          const files = fs.readdirSync(agentsDir);
+          console.log("Found files:", files);
           
-          if (fs.existsSync(agentsDir)) {
-            const files = fs.readdirSync(agentsDir).filter(f => f.endsWith(".json"));
-            console.log("Found agents:", files.length);
-            
-            for (const file of files) {
-              try {
-                const agent = JSON.parse(fs.readFileSync(path.join(agentsDir, file), "utf8"));
-                const today = new Date().toISOString().split("T")[0];
-                
-                if (agent.last_checkin !== today) {
-                  agent.last_checkin = today;
-                  agent.streak = (agent.streak || 0) + 1;
-                  agent.resources["灵气"] = (agent.resources["灵气"] || 0) + 5;
-                  
-                  fs.writeFileSync(path.join(agentsDir, file), JSON.stringify(agent, null, 2));
-                  console.log("✓ " + agent.name + " 签到成功!");
-                } else {
-                  console.log("○ " + agent.name + " 已签到");
-                }
-              } catch(e) {
-                console.error("Error:", e.message);
+          for (const file of files) {
+            if (!file.endsWith(".json")) continue;
+            try {
+              const agent = JSON.parse(fs.readFileSync(agentsDir + "/" + file, "utf8"));
+              const today = new Date().toISOString().split("T")[0];
+              if (agent.last_checkin !== today) {
+                agent.last_checkin = today;
+                agent.streak = (agent.streak || 0) + 1;
+                agent.resources["灵气"] = (agent.resources["灵气"] || 0) + 5;
+                fs.writeFileSync(agentsDir + "/" + file, JSON.stringify(agent, null, 2));
+                console.log("✓ " + agent.name + " 签到成功!");
+              } else {
+                console.log("○ " + agent.name + " 已签到");
               }
+            } catch(e) {
+              console.error("Error:", e.message);
             }
-          } else {
-            console.log("No agents directory");
           }
           '
