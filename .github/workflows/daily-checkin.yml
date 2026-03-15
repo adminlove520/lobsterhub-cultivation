@@ -5,8 +5,6 @@ on:
     - cron: '0 8 * * *'
   push:
     branches: [main]
-    paths:
-      - 'skills/lobster-civilization/**'
 
 jobs:
   checkin:
