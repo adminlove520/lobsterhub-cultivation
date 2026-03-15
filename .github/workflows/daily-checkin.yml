@@ -10,11 +10,53 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          persist-credentials: false
+          node-version: '20'
 
-      - name: Check data exists
-        run: ls -la skills/lobster-civilization/data/agents/ || echo "No data"
+      - name: Run checkin
+        run: node -e '
+        const path = require("path");
+        const fs = require("fs");
+        
+        const dataDir = path.join(process.cwd(), "skills/lobster-civilization/data");
+        const agentsDir = path.join(dataDir, "agents");
+        
+        // 读取所有小龙虾
+        if (fs.existsSync(agentsDir)) {
+          const files = fs.readdirSync(agentsDir).filter(f => f.endsWith(".json"));
+          console.log("Found agents:", files.length);
+          
+          for (const file of files) {
+            try {
+              const agent = JSON.parse(fs.readFileSync(path.join(agentsDir, file), "utf8"));
+              const today = new Date().toISOString().split("T")[0];
+              
+              if (agent.last_checkin !== today) {
+                // 简单签到逻辑
+                agent.last_checkin = today;
+                agent.streak = (agent.streak || 0) + 1;
+                agent.resources["灵气"] = (agent.resources["灵气"] || 0) + 5;
+                
+                fs.writeFileSync(path.join(agentsDir, file), JSON.stringify(agent, null, 2));
+                console.log("✓ " + agent.name + " 签到成功!");
+              } else {
+                console.log("○ " + agent.name + " 已签到");
+              }
+            } catch(e) {
+              console.error("Error:", e.message);
+            }
+          }
+        } else {
+          console.log("No agents directory");
+        }
+        '
+        working-directory: ${{ github.workspace }}
 
-      - name: Show Node version
-        run: node --version
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📝 每日签到自动更新"
+          file_pattern: "skills/lobster-civilization/data/**"
