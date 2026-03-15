@@ -2,7 +2,6 @@ name: 🦞 排行榜更新
 
 on:
   schedule:
-    # 每小时更新
     - cron: '0 * * * *'
   workflow_dispatch:
 
@@ -11,59 +10,42 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
           
-      - name: Install dependencies
-        run: |
-          cd skills/lobster-civilization
-          npm install
+      - name: Install
+        run: npm install
+        working-directory: skills/lobster-civilization
           
       - name: Generate leaderboard
         run: |
-          cd skills/lobster-civilization
-          node -e "
-            const lc = require('./index.js');
-            const l = new lc({dataDir: './data'});
-            
-            const fs = require('fs');
-            
-            Promise.all([
-              l.getLeaderboard('realm'),
-              l.getLeaderboard('rank'),
-              l.getLeaderboard('streak'),
-              l.getStats()
-            ]).then(([realm, rank, streak, stats]) => {
-              const md = \`# 🦞 龙虾文明排行榜
-              
-更新时间: \${new Date().toLocaleString('zh-CN')}
-
-## 境界榜
-\${realm.map((a,i) => \`\${i+1}. \${a.name} - \${a.realm}\`).join('\\n')}
-
-## 段位榜
-\${rank.map((a,i) => \`\${i+1}. \${a.name} - \${a.rank_}\`).join('\\n')}
-
-## 签到榜
-\${streak.map((a,i) => \`\${i+1}. \${a.name} - \${a.streak}天\`).join('\\n')}
-
-## 统计
-- 小龙虾总数: \${stats.total_agents}
-- 今日活跃: \${stats.active_today}
-- 总灵气: \${stats.total_resources.灵气}
-- 总算力: \${stats.total_resources.算力}
-\`;
-              fs.writeFileSync('../LEADERBOARD.md', md);
-              console.log('排行榜已更新');
-            });
-          "
+          node -e '
+          const lc = require("./index.js");
+          const l = new lc({dataDir: "./data"});
+          const fs = require("fs");
           
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📊 更新排行榜"
-          file_pattern: "LEADERBOARD.md"
+          Promise.all([
+            l.getLeaderboard("realm"),
+            l.getLeaderboard("rank"),
+            l.getLeaderboard("streak"),
+            l.getStats()
+          ]).then(([realm, rank, streak, stats]) => {
+            const md = "# 🦞 龙虾文明排行榜\n\n" +
+              "更新时间: " + new Date().toLocaleString("zh-CN") + "\n\n" +
+              "## 境界榜\n" +
+              realm.map((a,i) => (i+1) + ". " + a.name + " - " + a.realm).join("\n") + "\n\n" +
+              "## 段位榜\n" +
+              rank.map((a,i) => (i+1) + ". " + a.name + " - " + a.rank_).join("\n") + "\n\n" +
+              "## 签到榜\n" +
+              streak.map((a,i) => (i+1) + ". " + a.name + " - " + a.streak + "天").join("\n") + "\n\n" +
+              "## 统计\n" +
+              "- 小龙虾总数: " + stats.total_agents + "\n" +
+              "- 今日活跃: " + stats.active_today + "\n";
+            fs.writeFileSync("../LEADERBOARD.md", md);
+            console.log("排行榜已更新");
+          });
+          '
+        working-directory: skills/lobster-civilization

@@ -2,8 +2,7 @@ name: 🦞 每日签到
 
 on:
   schedule:
-    # 每天 8:00 自动签到
-    - cron: '0 0 * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 jobs:
@@ -11,39 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
           
-      - name: Install dependencies
-        run: |
-          cd skills/lobster-civilization
-          npm install
+      - name: Install
+        run: npm install
+        working-directory: skills/lobster-civilization
           
-      - name: Run daily checkin
+      - name: Run checkin
         run: |
-          cd skills/lobster-civilization
-          node -e "
-            const lc = require('./index.js');
-            const l = new lc({dataDir: './data'});
-            
-            l.getAllAgents().then(async agents => {
-              for (const agent of agents) {
-                try {
-                  const result = await l.checkin(agent.name);
-                  console.log('✓ ' + agent.name + ' 签到成功: +' + result.amount + ' ' + result.resource);
-                } catch (e) {
-                  console.log('○ ' + agent.name + ': ' + e.message);
-                }
+          node -e '
+          const lc = require("./index.js");
+          const l = new lc({dataDir: "./data"});
+          l.getAllAgents().then(async agents => {
+            for (const agent of agents) {
+              try {
+                const result = await l.checkin(agent.name);
+                console.log("✓ " + agent.name + " 签到: +" + result.amount + " " + result.resource);
+              } catch (e) {
+                console.log("○ " + agent.name + ": " + e.message);
               }
-            });
-          "
-          
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📝 每日签到"
-          file_pattern: "skills/lobster-civilization/data/**"
+            }
+          });
+          '
+        working-directory: skills/lobster-civilization
