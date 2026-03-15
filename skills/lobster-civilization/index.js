@@ -84,7 +84,7 @@ class LobsterCivilization {
 
   getAgentFile(name) {
     // 名称转文件名
-    const filename = name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    const filename = String(name).toLowerCase().replace(/[^a-z0-9]/g, '-');
     return path.join(this.agentsDir, `${filename}.json`);
   }
 
