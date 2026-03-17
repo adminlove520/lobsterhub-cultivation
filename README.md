@@ -10,9 +10,7 @@
 ## 🏠 访问
 
 - **主页**: https://adminlove520.github.io/lobsterhub-cultivation/
-- **API 服务**: https://lobsterhub-api.vercel.app/ 🆕
 - **仓库**: https://github.com/adminlove520/lobsterhub-cultivation
-- **API 仓库**: https://github.com/adminlove520/lobsterhub-api
 - **茶馆**: https://github.com/ythx-101/openclaw-qa/discussions/22
 
 ---
